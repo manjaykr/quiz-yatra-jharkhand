@@ -1,0 +1,24 @@
+<div class="quiz-container" *ngIf="!showResult">
+    <h2>Question {{ currentQuestion + 1 }} of {{ questions.length }}</h2>
+
+    <mat-card>
+        <mat-card-content>
+            <p class="question">{{ questions[currentQuestion]?.question }}</p>
+            <div class="options">
+                <button mat-raised-button color="accent" *ngFor="let opt of questions[currentQuestion]?.options"
+                    (click)="answer(opt)">
+                    {{ opt }}
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div *ngIf="showResult" class="result">
+    <mat-card>
+        <mat-card-content>
+            <h2>Your Score: {{ score }} / {{ questions.length }}</h2>
+            <button mat-raised-button color="primary" (click)="restart()">Restart Quiz</button>
+        </mat-card-content>
+    </mat-card>
+</div>
