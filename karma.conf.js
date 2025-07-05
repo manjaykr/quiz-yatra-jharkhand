@@ -31,7 +31,9 @@ module.exports = function (config) {
           '--no-sandbox',
           '--disable-gpu',
           '--disable-dev-shm-usage',
-          '--disable-setuid-sandbox'
+          '--disable-setuid-sandbox',
+          '--disable-translate',
+          '--disable-extensions',
         ]
       }
     },
