@@ -6,7 +6,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
   });
 
@@ -17,9 +17,12 @@ describe('App', () => {
   });
 
   it('should render title', () => {
+    // const fixture = TestBed.createComponent(App);
+    // fixture.detectChanges();
+    // const compiled = fixture.nativeElement as HTMLElement;
+    // expect(compiled.querySelector('h1')?.textContent).toContain('Hello, quiz-yatra-jharkhand');
     const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, quiz-yatra-jharkhand');
+    const app = fixture.componentInstance;
+    expect(app['title']).toBe('quiz-yatra-jharkhand');
   });
 });

@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+interface QuizQuestion {
+  question: string;
+  options: string[];
+  answer: string;
+}
 
 @Component({
   selector: 'app-quiz',
@@ -10,13 +15,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './quiz.html',
   styleUrl: './quiz.css',
 })
-export class Quiz {
-  questions: any[] = [];
+export class Quiz implements OnInit {
+  questions: QuizQuestion[] = [];
   currentQuestion = 0;
   score = 0;
   showResult = false;
-  constructor(private quizService: QuizService) {}
-
+  private quizService = inject(QuizService);
   ngOnInit(): void {
     this.questions = this.quizService.getQuestions();
   }
